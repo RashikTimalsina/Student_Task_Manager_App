@@ -22,23 +22,20 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    // Proceed to user login
-                    if (UserLogin.loginUser()) {
-                        // After successful login, show task management menu
-                        TaskManager.taskManagementMenu();
+
+                    if (UserLogin.loginUser()) {        //this will prompt login for existing students
+                        TaskManager.taskManagementMenu();       //show task-management-menu
                     }
                     break;
 
                 case 2:
-                    // Proceed to user registration
-                    UserRegistration.registerUser();
+                    UserRegistration.registerUser();      //this will prompt registration for new students
                     break;
 
                 case 3:
-                    // Exit the program and return control to terminal
-                    System.out.println("Exiting the application...");
-                    scanner.close();  // Close the scanner resource
-                    return;  // This will exit the main method and return control to the terminal
+                    System.out.println("Exiting the application...");       //exit the program
+                    scanner.close();
+                    return;
 
                 default:
                     System.out.println("Invalid choice. Please try again.");

@@ -25,7 +25,7 @@ public class UserRegistration {
             String query = "INSERT INTO users (username, password) VALUES (?, ?)";
             statement = connection.prepareStatement(query);
             statement.setString(1, username);
-            statement.setString(2, password); // Save plain text password
+            statement.setString(2, password); //stores password in Plain-text form for now
             int rows = statement.executeUpdate();
 
             if (rows > 0) {
@@ -36,7 +36,7 @@ public class UserRegistration {
 
         } catch (SQLException e) {
             System.err.println("Error during registration: " + e.getMessage());
-            e.printStackTrace();
+            e.printStackTrace();    //method called to perform login again
         } finally {
             try {
                 if (statement != null) statement.close();
