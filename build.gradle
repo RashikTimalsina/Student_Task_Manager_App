@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5 dependencies for testing
+    testImplementation platform('org.junit:junit-bom:5.10.0')  // To manage JUnit versions
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'  // JUnit 5 API for writing tests
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'  // JUnit 5 engine to run tests
+
+    // MySQL Connector/J for database connectivity
+    implementation files('libs/mysql-connector-j-9.2.0.jar')  // Include the MySQL connector
+
+}
+
+test {
+    useJUnitPlatform()
+}
