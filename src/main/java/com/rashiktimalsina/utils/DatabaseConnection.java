@@ -1,14 +1,12 @@
 package com.rashiktimalsina.utils;
 
+import com.rashiktimalsina.config.DatabaseConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/student_task_manager?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "CLEB2d@mysql";
 
     private static Connection connection = null;
 
@@ -19,7 +17,13 @@ public class DatabaseConnection {
             try {
                 // Load MySQL JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+                // Retrieve credentials from DatabaseConfig
+                String url = DatabaseConfig.getUrl();
+                String user = DatabaseConfig.getUser();
+                String password = DatabaseConfig.getPassword();
+
+                connection = DriverManager.getConnection(url, user, password);
                 System.out.println("Database connected successfully!");
             } catch (ClassNotFoundException | SQLException e) {
                 System.err.println("Error connecting to the database: " + e.getMessage());
